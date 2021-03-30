@@ -39,7 +39,7 @@ buildPackage() {
   rm -rf package
   pkg dist/bin.js \
     -t node14.4.0-linux-x64,node14.4.0-macos-x64,node14.4.0-win-x64 \
-    --out-path package 1> /dev/null
+    --out-path package
 }
 
 readonly rootDir="$(dirname $(realpath $0))/.."

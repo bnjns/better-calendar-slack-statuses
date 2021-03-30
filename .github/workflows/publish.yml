@@ -1,0 +1,44 @@
+name: Publish
+
+on: push
+#    branches:
+#      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      BINARY_PREFIX: better-calendar-slack-statuses
+    strategy:
+      matrix:
+        node-version:
+          - 14.4.0
+        target:
+          - linux-x64
+          - macos-x64
+          - win-x64
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install pkg
+        run: yarn global add pkg
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Run tests
+        run: yarn test
+      - name: Build
+        run: yarn build
+      - name: Build ${{ matrix.target }}
+        run: |
+          $(yarn global bin)/pkg dist/bin.js \
+              -t ${{ matrix.target }} \
+              --output ${{ env.BINARY_PREFIX }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.BINARY_PREFIX }}-${{ matrix.target }}
+          path: ${{ env.BINARY_PREFIX }}*
+          retention-days: 1
