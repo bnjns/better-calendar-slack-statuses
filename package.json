@@ -1,0 +1,36 @@
+{
+  "name": "better-calendar-slack-statuses",
+  "version": "0.0.1",
+  "description": "A Node.js application that lets you customise your Slack status based on your calendar",
+  "main": "index.js",
+  "repository": "https://github.com/bnjns/better-calendar-slack-statuses",
+  "author": "bnjns",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+
+  },
+  "scripts": {
+    "build": "bin/build.sh",
+    "build:lambda": "bin/build.sh --lambda",
+    "build:package": "bin/build.sh --package",
+    "lint": "npx eslint './src/**/*.ts'",
+    "run:local": "rm -rf dist && tsc && NODE_ENV=development node dist/local.js",
+    "test": "npx jest",
+    "test:watch": "npx jest --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "eslint": "^7.5.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.1.0",
+    "jest-junit": "^11.0.1",
+    "ts-jest": "^26.1.3",
+    "ts-node": "^9.1.1",
+    "typescript": "^3.9.7"
+  }
+}

@@ -1,3 +1,3 @@
 # Better Calendar Slack Statuses
 
-WIP.
+_To be completed_ 
