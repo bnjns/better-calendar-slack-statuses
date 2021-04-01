@@ -1,1 +1,1 @@
-export const example = () => 'test'
+export const example = (): string => 'test'
