@@ -28,7 +28,9 @@ buildLambda() {
   compile
 
   echo ":: Compressing"
-  zip -r dist.zip * 1> /dev/null
+  pushd dist &> /dev/null
+  zip -r ../dist.zip * 1> /dev/null
+  popd &> /dev/null
   rm -rf dist/
 }
 

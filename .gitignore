@@ -29,3 +29,4 @@ out/
 /dist*.zip
 /package/
 .env
+.DS_Store
